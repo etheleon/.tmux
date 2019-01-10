@@ -292,3 +292,16 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+set -gu prefix2
+unbind C-g
+unbind C-b
+set -g prefix C-g
+bind C-g send-prefix
+
+# move status line to top
+#set -g status-position top
+set -sg escape-time 0
+set-window-option -g mode-keys vi
+list-keys -T copy-mode-vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
